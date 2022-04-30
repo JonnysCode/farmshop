@@ -22,28 +22,10 @@ const navigation = {
       name: 'Seeds',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'All seeds',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg',
-          imageAlt: 'Model wearing minimalist watch with black wristband and white watch face.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg',
-          imageAlt: 'Model opening tan leather long wallet with credit card pockets and cash pouch.',
+          imageSrc: seeds,
+          imageAlt: 'Seeds',
         },
       ],
     },
@@ -51,29 +33,10 @@ const navigation = {
       name: 'Crop Protection',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'All crop protection products',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
+          imageSrc: protection,
+          imageAlt: 'crop protection',
         },
       ],
     },
@@ -81,29 +44,10 @@ const navigation = {
         name: 'Fertilizer',
         featured: [
           {
-            name: 'New Arrivals',
+            name: 'All Fertilizers',
             href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-            imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-          },
-          {
-            name: 'Basic Tees',
-            href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-            imageAlt: 'Model wearing light heather gray t-shirt.',
-          },
-          {
-            name: 'Accessories',
-            href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-            imageAlt:
-              'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-          },
-          {
-            name: 'Carry',
-            href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-            imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
+            imageSrc: fertelizer,
+            imageAlt: 'Fertilizer',
           },
         ],
       },
@@ -172,36 +116,14 @@ const trendingProducts = [
   },
   
 ]
-const perks = [
-  {
-    name: 'Free returns',
-    imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-returns-light.svg',
-    description: 'Not what you expected? Place it back in the parcel and attach the pre-paid postage stamp.',
-  },
-  {
-    name: 'Same day delivery',
-    imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg',
-    description:
-      'We offer a delivery service that has never been done before. Checkout today and receive your products within hours.',
-  },
-  {
-    name: 'All year discount',
-    imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg',
-    description: 'Looking for a deal? You can use the code "ALLYEAR" at checkout and get money off all year round.',
-  },
-  {
-    name: 'For the planet',
-    imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg',
-    description: 'We’ve pledged 1% of sales to the preservation and restoration of the natural environment.',
-  },
-]
+
 const footerNavigation = {
   products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
+    { name: 'Seeds', href: '#' },
+    { name: 'Fertilizer', href: '#' },
+    { name: 'Crop Protection', href: '#' },
+    { name: 'Animal Supplies', href: '#' },
+    { name: 'Others', href: '#' },
   ],
   company: [
     { name: 'Who we are', href: '#' },
@@ -218,7 +140,6 @@ const footerNavigation = {
     { name: 'Warranty', href: '#' },
     { name: 'Secure Payments', href: '#' },
     { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
   ],
 }
 
@@ -822,7 +743,7 @@ export default function Shop() {
           </div>
 
           <div className="border-t border-gray-100 py-10 text-center">
-            <p className="text-sm text-gray-500">&copy; 2021 Workflow, Inc. All rights reserved.</p>
+            <p className="text-sm text-gray-500">&copy; 2021 FarmShop, Inc. All rights reserved.</p>
           </div>
         </div>
       </footer>
