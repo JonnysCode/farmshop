@@ -21,14 +21,6 @@ import Selection from './Selection'
 import Farm from './Farm'
 
 
-let navigation = [
-  { name: 'Supplier Shop', href: '#', icon: ShoppingBagIcon, current: true },
-  { name: 'My Farm', href: '#', icon: HomeIcon, current: false },
-  { name: 'Weather', href: '#', icon: SunIcon, current: false },
-  { name: 'News', href: '#', icon: NewspaperIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-]
-
 const secondaryNavigation = [
   { name: 'Apps', href: '#', icon: ViewGridAddIcon },
   { name: 'Settings', href: '#', icon: CogIcon },
@@ -40,12 +32,20 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [farmOpen, setFarmOpen] = useState(false)
+  const [farmOpen, setFarmOpen] = useState([true, false, false, false, false])
+
+  let navigation = [
+    { name: 'Supplier Shop', href: '#', icon: ShoppingBagIcon, current: true },
+    { name: 'My Farm', href: '#', icon: HomeIcon, current: false },
+    { name: 'Weather', href: '#', icon: SunIcon, current: false },
+    { name: 'News', href: '#', icon: NewspaperIcon, current: false },
+    { name: 'Documents', href: '#', icon: InboxIcon, current: false },
+  ]
 
   function setAsCurrent(item) {
     navigation.map((it) => it.current = false)
     item.current = true
-    console.log(item)
+    console.log(navigation)
   }
 
   return (
@@ -264,7 +264,7 @@ export default function Dashboard() {
 
           <main className="">
             {(navigation[0].current ? <Shop /> : <Farm />)}
-            <Shop />
+            
           </main>
 
         </div>
