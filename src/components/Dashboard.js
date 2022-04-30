@@ -12,14 +12,16 @@ import {
   XIcon,
   ViewGridAddIcon,
   CogIcon,
+  TemplateIcon,
 } from '@heroicons/react/outline'
 
 import Shop from './Shop'
 import logo from './images/farmshop.png'
 import Selection from './Selection'
+import Farm from './Farm'
 
 
-const navigation = [
+let navigation = [
   { name: 'Supplier Shop', href: '#', icon: ShoppingBagIcon, current: true },
   { name: 'My Farm', href: '#', icon: HomeIcon, current: false },
   { name: 'Weather', href: '#', icon: SunIcon, current: false },
@@ -38,6 +40,13 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [farmOpen, setFarmOpen] = useState(false)
+
+  function setAsCurrent(item) {
+    navigation.map((it) => it.current = false)
+    item.current = true
+    console.log(item)
+  }
 
   return (
     <>
@@ -103,7 +112,7 @@ export default function Dashboard() {
                     {navigation.map((item) => (
                       <a
                         key={item.name}
-                        href={item.href}
+                        onClick={() => setAsCurrent(item)}
                         className={classNames(
                           item.current
                             ? 'bg-gray-100 text-gray-900'
@@ -186,7 +195,7 @@ export default function Dashboard() {
                 {navigation.map((item) => (
                   <a
                     key={item.name}
-                    href={item.href}
+                    onClick={() => setAsCurrent(item)}
                     className={classNames(
                       item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
@@ -254,6 +263,7 @@ export default function Dashboard() {
           </div>
 
           <main className="">
+            {(navigation[0].current ? <Shop /> : <Farm />)}
             <Shop />
           </main>
 
