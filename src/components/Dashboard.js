@@ -46,7 +46,7 @@ export default function Dashboard() {
 
   function setAsCurrent(item) {
     navigation.map((it) => {
-      if (it == item) {
+      if (it.name == item.name) {
         it.current = true
       } else {
         it.current = false
