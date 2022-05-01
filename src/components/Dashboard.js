@@ -32,7 +32,7 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [farmOpen, setFarmOpen] = useState([true, false, false, false, false])
+  const [farmOpen, setFarmOpen] = useState(false)
 
   let navigation = [
     { name: 'Supplier Shop', href: '#', icon: ShoppingBagIcon, current: true },
@@ -42,10 +42,24 @@ export default function Dashboard() {
     { name: 'Documents', href: '#', icon: InboxIcon, current: false },
   ]
 
+  const [navi, setNavi] = useState(navigation)
+
   function setAsCurrent(item) {
-    navigation.map((it) => it.current = false)
-    item.current = true
+    navigation.map((it) => {
+      if (it == item) {
+        it.current = true
+      } else {
+        it.current = false
+      }
+    })
     console.log(navigation)
+    if (item.name == 'My Farm') {
+      setFarmOpen(true)
+      setNavi(navigation)
+    } else {
+      setFarmOpen(false)
+      setNavi(navigation)
+    }
   }
 
   return (
@@ -109,7 +123,7 @@ export default function Dashboard() {
                   </div>
 
                   <nav className="mt-5 px-2 space-y-1">
-                    {navigation.map((item) => (
+                    {navi.map((item) => (
                       <a
                         key={item.name}
                         onClick={() => setAsCurrent(item)}
@@ -192,7 +206,7 @@ export default function Dashboard() {
               <hr className="border-t border-gray-200 mx-2" aria-hidden="true" />
               
               <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
-                {navigation.map((item) => (
+                {navi.map((item) => (
                   <a
                     key={item.name}
                     onClick={() => setAsCurrent(item)}
@@ -263,7 +277,7 @@ export default function Dashboard() {
           </div>
 
           <main className="">
-            {(navigation[0].current ? <Shop /> : <Farm />)}
+            {farmOpen ? <Farm /> : <Shop />}
             
           </main>
 
