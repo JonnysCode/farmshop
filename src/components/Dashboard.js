@@ -16,7 +16,7 @@ import {
 } from '@heroicons/react/outline'
 
 import Shop from './Shop'
-import logo from './images/farmshop.png'
+import logo from './images/farmshop.svg'
 import Selection from './Selection'
 import Farm from './Farm'
 
