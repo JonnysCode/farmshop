@@ -86,6 +86,7 @@ const trendingProducts = [
     href: '#',
     imageSrc: p1,
     imageAlt: 'P1',
+    reason: 'Useful for your Field 1 '
   },
   {
     id: 2,
@@ -95,6 +96,7 @@ const trendingProducts = [
     href: '#',
     imageSrc: p2,
     imageAlt: 'P1',
+    reason: 'Best conditions in Field 4'
   },
   {
     id: 3,
@@ -104,6 +106,7 @@ const trendingProducts = [
     href: '#',
     imageSrc: p3,
     imageAlt: 'P1',
+    reason: 'Based on your previous purchases'
   },
   {
     id: 4,
@@ -113,6 +116,7 @@ const trendingProducts = [
     href: '#',
     imageSrc: p4,
     imageAlt: 'P1',
+    reason: 'High demand in your region'
   },
   
 ]
@@ -616,10 +620,10 @@ export default function Shop() {
           <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:pt-32 lg:px-8">
             <div className="md:flex md:items-center md:justify-between">
               <h2 id="favorites-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
-                New Products
+                Product Recommendations
               </h2>
               <a href="#" className="hidden text-sm font-medium text-lime-600 hover:text-lime-500 md:block">
-                Shop the collection<span aria-hidden="true"> &rarr;</span>
+                Find more <span aria-hidden="true"> &rarr;</span>
               </a>
             </div>
 
@@ -640,6 +644,7 @@ export default function Shop() {
                     </a>
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-orange-500">{product.reason}</p>
                   <p className="mt-1 text-sm font-medium text-gray-900">{product.price}</p>
                 </div>
               ))}

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
@@ -8,23 +9,18 @@ import {
   HomeIcon,
   InboxIcon,
   MenuIcon,
-  UsersIcon,
   XIcon,
   ViewGridAddIcon,
-  CogIcon,
-  TemplateIcon,
+  CogIcon
 } from '@heroicons/react/outline'
 
 import Shop from './Shop'
 import logo from './images/farmshop.svg'
+import farmer from './images/farmer.png'
 import Selection from './Selection'
 import Farm from './Farm'
+import Apps from './Apps'
 
-
-const secondaryNavigation = [
-  { name: 'Apps', href: '#', icon: ViewGridAddIcon },
-  { name: 'Settings', href: '#', icon: CogIcon },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -32,7 +28,7 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [farmOpen, setFarmOpen] = useState(false)
+  const [farmOpen, setFarmOpen] = useState("Shop")
 
   let navigation = [
     { name: 'Supplier Shop', href: '#', icon: ShoppingBagIcon, current: true },
@@ -40,26 +36,32 @@ export default function Dashboard() {
     { name: 'Weather', href: '#', icon: SunIcon, current: false },
     { name: 'News', href: '#', icon: NewspaperIcon, current: false },
     { name: 'Documents', href: '#', icon: InboxIcon, current: false },
+    { name: 'Apps', href: '#', icon: ViewGridAddIcon, current: false },
+    { name: 'Settings', href: '#', icon: CogIcon, current: false },
   ]
 
   const [navi, setNavi] = useState(navigation)
 
   function setAsCurrent(item) {
     navigation.map((it) => {
-      if (it.name == item.name) {
+      if (it.name === item.name) {
         it.current = true
       } else {
         it.current = false
       }
     })
+
     console.log(navigation)
-    if (item.name == 'My Farm') {
-      setFarmOpen(true)
-      setNavi(navigation)
+    setNavi(navigation)
+
+    if (item.name === 'My Farm') {
+      setFarmOpen("farm")
+    } else if (item.name === 'Apps') {
+      setFarmOpen("apps")
     } else {
-      setFarmOpen(false)
-      setNavi(navigation)
+      setFarmOpen("shop")
     }
+
   }
 
   return (
@@ -124,56 +126,48 @@ export default function Dashboard() {
 
                   <nav className="mt-5 px-2 space-y-1">
                     {navi.map((item) => (
-                      <a
-                        key={item.name}
-                        onClick={() => setAsCurrent(item)}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-100 text-gray-900'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                          'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                        )}
-                      >
-                        <item.icon
-                          className={classNames(
-                            item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                            'mr-4 flex-shrink-0 h-6 w-6'
-                          )}
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
-                    ))}
-                    <hr className="border-t border-gray-200 my-5" aria-hidden="true" />
-                    <div className="px-2 space-y-1">
-                      {secondaryNavigation.map((item) => (
+                      <div>
+
+                        { item.name === "Apps" 
+                        ? <hr className="border-t border-gray-200 my-5" aria-hidden="true" /> 
+                        : <span></span> }
+
                         <a
                           key={item.name}
-                          href={item.href}
-                          className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                          onClick={() => setAsCurrent(item)}
+                          className={classNames(
+                            item.current
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                          )}
                         >
                           <item.icon
-                            className="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6"
+                            className={classNames(
+                              item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-4 flex-shrink-0 h-6 w-6'
+                            )}
                             aria-hidden="true"
                           />
                           {item.name}
                         </a>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </nav>
                 </div>
+
                 <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
                   <a href="#" className="flex-shrink-0 group block">
                     <div className="flex items-center">
                       <div>
                         <img
-                          className="inline-block h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          className="inline-block h-10 w-10"
+                          src={farmer}
                           alt=""
                         />
                       </div>
                       <div className="ml-3">
-                        <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">Tom Cook</p>
+                        <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">Hans Muster</p>
                         <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
                       </div>
                     </div>
@@ -207,56 +201,47 @@ export default function Dashboard() {
               
               <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
                 {navi.map((item) => (
-                  <a
-                    key={item.name}
-                    onClick={() => setAsCurrent(item)}
-                    className={classNames(
-                      item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                    )}
-                  >
-                    <item.icon
+                  <div>
+
+                    { item.name === "Apps" 
+                      ? <hr className="border-t border-gray-200 my-5" aria-hidden="true" /> 
+                      : <span></span> 
+                    }
+
+                    <a
+                      key={item.name}
+                      onClick={() => setAsCurrent(item)}
                       className={classNames(
-                        item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                        'mr-3 flex-shrink-0 h-6 w-6'
+                        item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                       )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </a>
-                ))}
-
-                <hr className="border-t border-gray-200 my-8" aria-hidden="true" />
-
-                <div className="flex-1 ">
-                    {secondaryNavigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-                      >
-                        <item.icon
-                          className="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
-                    ))}
+                    >
+                      <item.icon
+                        className={classNames(
+                          item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-3 flex-shrink-0 h-6 w-6'
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
                   </div>
+                ))}
               </nav>
             </div>
+
             <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
               <a href="#" className="flex-shrink-0 w-full group block">
                 <div className="flex items-center">
                   <div>
                     <img
-                      className="inline-block h-9 w-9 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      className="inline-block h-9 w-9"
+                      src={farmer}
                       alt=""
                     />
                   </div>
                   <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Tom Cook</p>
+                    <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Hans Muster</p>
                     <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
                   </div>
                 </div>
@@ -277,8 +262,7 @@ export default function Dashboard() {
           </div>
 
           <main className="">
-            {farmOpen ? <Farm /> : <Shop />}
-            
+            {farmOpen === "farm" ? <Farm /> : farmOpen === "apps" ? <Apps /> : <Shop />}
           </main>
 
         </div>

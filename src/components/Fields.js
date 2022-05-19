@@ -7,21 +7,35 @@ const positions = [
     title: 'Field 1',
     department: 'Engineering',
     closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
+    closeDateFull: 'July 12, 2022',
   },
   {
     id: 2,
     title: 'Field 2',
     department: 'Engineering',
     closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
+    closeDateFull: 'July 14, 2022',
   },
   {
     id: 3,
     title: 'Field 3',
     department: 'Design',
     closeDate: '2020-01-14',
-    closeDateFull: 'January 14, 2020',
+    closeDateFull: 'May 30, 2022',
+  },
+  {
+    id: 4,
+    title: 'Field 4',
+    department: 'Engineering',
+    closeDate: '2020-01-07',
+    closeDateFull: 'June 8, 2022',
+  },
+  {
+    id: 5,
+    title: 'Field 5',
+    department: 'Design',
+    closeDate: '2020-01-14',
+    closeDateFull: 'June 8, 2022',
   },
 ]
 
